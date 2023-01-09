@@ -1,10 +1,19 @@
 package Ejercicios;
 
+import java.sql.SQLOutput;
+
 public class Ejercicio1 {
     public static void main(String[] args) {
         //creamos un array de string que aparezca: nombre apellidos direccion telefono.
-        String persona
+        String telefono="6891872342";
+        String nombre="Francisco";
+        String apellidos="Nolasco Romero";
+        String direccion="alonso de freylas";
+        String[] persona ={nombre,apellidos,direccion,telefono};
         //usamos un bucle mejorado aparezca en una linea cada uno de los valores
+        for (String personas : persona) {
+            System.out.println(personas);
+        }
         //nombre
         //apellidos
         //..
@@ -18,6 +27,7 @@ public class Ejercicio1 {
         //con el formato apellidos, nombre
         //un metodo que se le pase el string anterior de apellidos y nombre,nos diga cuantas
         //vocales tiene entre apellidos y nombre
+
     }
 }
 
