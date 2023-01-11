@@ -28,22 +28,39 @@ public class Ejercicio1 {
         //"NOMBRE,APELLIDOS,DIRECCIÓN,TELÉFONO"
         String csv2 = crearCampoCSVSinEspaciosYMayuscula(csv1);
         System.out.println(csv2);
-
+        //Un método, que se le pase la cadena anterior y nos devuelva el nombre
+        //con el formato apellidos, nombre
         String nombre = crearNombre(csv2);
-        System.out.printf(nombre);
-
+        System.out.printf("NOMBRE: %s%n", nombre);
+        //Un método que se le pase el String anterior de apellidos y nombre, nos diga
+        //cuantas vocales tiene entre apellidos y nombre
+        int numeroVocalesNombre = contarVocalesDeNombre(nombre);
+        System.out.println("TIENE " + numeroVocalesNombre + " vocales");
     }
 
-    private static String crearNombre(String csv2) {
-        //JAVIER,GÓMEZHERNÁNDEZ,AVDA.MADRID35,953222222
-        String[] csv22 = csv2.split(",");
-        return csv22[1].concat(",").concat(csv22[0]).toLowerCase();
-
+    private static int contarVocalesDeNombre(String nombre) {
+        int contadorVocales = 0;
+        for (int i = 0; i < nombre.length(); i++) {
+            if (nombre.toLowerCase().charAt(i) == 'a' || nombre.toLowerCase().charAt(i) == 'e' || nombre.toLowerCase().charAt(i) == 'i'|| nombre.toLowerCase().charAt(i) == 'o'|| nombre.toLowerCase().charAt(i) == 'u'|| nombre.toLowerCase().charAt(i) == 'á'|| nombre.toLowerCase().charAt(i) == 'ó' )
+                contadorVocales++;
+        }
+        return contadorVocales;
     }
 
-    private static String crearCampoCSVSinEspaciosYMayuscula(String csv1) {
-        csv1 = "JAVIER, GÓMEZ HERNÁNDEZ, AVDA. MADRID 35, 953222222".replaceAll("  ","");
-        return csv1.toUpperCase();
+    private static String crearNombre(String csv) {
+        //recibo "NOMBRE,APELLIDOS,DIRECCIÓN,TELÉFONO"
+        //devuelvo: apellidos, nombre
+        String[] tokens = csv.split(",");
+        //new String[]{"NOMBRE","APELLIDOS","DIRECCION","TELEFONO"}
+        return tokens[1].toLowerCase() + ", " + tokens[0].toLowerCase();
+    }
+
+    private static String crearCampoCSVSinEspaciosYMayuscula(String csv) {
+        //csv = "nombre, apellidos, direccion, telefono"
+        //return NOMBRE,APELLIDOS,DIRECCION,TELEFONO
+        return csv.replaceAll(", ",",").toUpperCase();
+        //falla por que quita el espacios en blanco de los apellidos
+        //solucionamos con split(", ")
     }
 
     private static String crearCampoCSV(String[] datos) {
@@ -59,12 +76,4 @@ public class Ejercicio1 {
         //012.................................................csv.length-1
         //substring(0, csv.length()-2)
     }
-
-
-
-    //Un método, que se le pase la cadena anterior y nos devuelva el nombre
-    //con el formato apellidos, nombre
-    //Un método que se le pase el String anterior de apellidos y nombre, nos diga
-    //cuantas vocales tiene entre apellidos y nombre
 }
-
