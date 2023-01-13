@@ -39,6 +39,7 @@ public class  ejercicio2 {
         String csv4 = añairCodigopostal(Listas);
         System.out.println(csv4);
 
+
     }
 
     private static String añairCodigopostal(List<String> Listas) {
@@ -61,28 +62,20 @@ public class  ejercicio2 {
         return csv;
     }
 
-    private static String crearCampoCSV1mayusculas(String csv1) {
+    private static String crearCampoCSV1mayusculas(String csv) {
+        StringBuilder sBuilder = new StringBuilder(csv);
 
-        StringBuilder sBuilder = new StringBuilder();
-      // String csv3= csv1.substring();
-       // sBuilder.replace(", ",",");
-
-        //csv = "nombre, apellidos, direccion, telefono"
-        //return NOMBRE,APELLIDOS,DIRECCION,TELEFONO
-        return null;
-        //falla por que quita el espacios en blanco de los apellidos
-        //solucionamos con split(", ")
+        return sBuilder.toString().replaceAll(", ",",").toUpperCase();
     }
 
     private static String crearCampoCSV1(List<String> Listas) {
         StringBuilder sBuilder = new StringBuilder();
-
-        String csv = String.valueOf(sBuilder);
         for (int i = 0; i < Listas.size(); i++) {
             sBuilder.append(Listas.get(i) + ", ");
         }
 
         // else
+        //devuelve un string el sbuilder substring
         return sBuilder.substring(0, sBuilder.length() - 2);
     }
 }
