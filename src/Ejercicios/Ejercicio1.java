@@ -5,10 +5,14 @@ import java.util.Scanner;
 public class Ejercicio1 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("-------------------------");
-        System.out.println("--INTRODUCE UNA PALABRA--");
-        System.out.println("-------------------------");
-        String palabra = scanner.nextLine();
+        String palabra;
+        do {
+            System.out.println("-------------------------");
+            System.out.println("--INTRODUCE UNA PALABRA--");
+            System.out.println("-------------------------");
+            palabra = scanner.nextLine();
+        }while (!palabra.toLowerCase().matches("[a-záéíóúñ]+"));
+
 
         String letra;
         do {
@@ -25,6 +29,11 @@ public class Ejercicio1 {
 
         System.out.println("La palabra " + palabra + " tiene " +  obtenerNumeroDeLetras(palabra) + " letras");
 
+        mostrarImformacion(palabra, letra, palabra2);
+
+    }
+
+    private static void mostrarImformacion(String palabra, String letra, String palabra2) {
         if (empiezaPorVocal(palabra))
             System.out.println("La palabra " + palabra + " empieza por vocal");
         else
@@ -37,7 +46,7 @@ public class Ejercicio1 {
 
         System.out.println("La palabra " + palabra + " tiene " + obtenerNumeroDeVocales(palabra) + " vocales");
 
-        if (contieneLetra(palabra,letra))
+        if (contieneLetra(palabra, letra))
             System.out.println("La palabra " + palabra + " si contiene la letra " + letra);
         else
             System.out.println("La palabra " + palabra + " no contiene la letra " + letra);
@@ -47,12 +56,12 @@ public class Ejercicio1 {
         else
             System.out.println("La palabra " + palabra + " no es palindromo");
 
-        if (sonIguales(palabra,palabra2))
+        if (sonIguales(palabra, palabra2))
             System.out.println("La palabra " + palabra + " si es igual que " + palabra2);
         else
             System.out.println("La palabra " + palabra + " no es igual que " + palabra2);
-
     }
+
     public static int obtenerNumeroDeLetras(String palabra){
         int letras=palabra.length();
         return letras;
@@ -75,17 +84,17 @@ public class Ejercicio1 {
     }
     public static boolean contieneLetra(String palabra, String letra){
         for (int i = 0; i < palabra.length(); i++) {
-            if (palabra.charAt(i) == letra.charAt(0))
+            if (palabra.toLowerCase().charAt(i) == letra.toLowerCase().charAt(0))
                 return true;
         }
         return false;
     }
     public static boolean esUnPalindromo(String palabra){
         String invertida = new StringBuilder(palabra).reverse().toString();
-        return invertida.equals(palabra);
+        return invertida.equalsIgnoreCase(palabra);
     }
     public static boolean sonIguales(String palabra,String palabra2){
-        return palabra.equals(palabra2);
+        return palabra.equalsIgnoreCase(palabra2);
     }
 
 
