@@ -1,4 +1,4 @@
-package Ejercicios;
+package Teoria;
 
 import java.util.List;
 
