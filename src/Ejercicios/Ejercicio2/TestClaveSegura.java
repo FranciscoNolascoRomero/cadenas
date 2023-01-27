@@ -29,7 +29,7 @@ public class TestClaveSegura {
             claves[i]=createSafePassword(lenght);
         }
         System.out.println(Arrays.toString(claves));
-        System.out.printf("Su clave segura es %s ",claves[random.nextInt(lenght)]);
+        System.out.printf("Su clave segura es %s ",claves[random.nextInt(numeroDeClaves)]);
         scanner.close();
 
     }
