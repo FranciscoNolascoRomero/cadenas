@@ -26,11 +26,13 @@ public class Ejercicio3 {
 
         System.out.println("¿Que nombre quieres buscar?");
         String palabra=sccanner.nextLine();
-        System.out.println("¿Esta en la lista la palabra "+palabra+"?"+comprobarPalabra(palabra,listaNombres));
+        System.out.println("¿Esta en la lista la palabra "+palabra+"? "+comprobarPalabra(palabra,listaNombres));
 //        System.out.println(comienzaPorLetra(letra,listaNombres));
 //        System.out.println(terminaEnVocal(listaNombres));
+        System.out.println("¿Que secuencia quieres buscar?");
+        String secuencia=sccanner.nextLine();
 
-//        System.out.println();
+       System.out.println(secuenciadecaracteres(secuencia,listaNombres));
 
     }
 
@@ -54,11 +56,20 @@ public class Ejercicio3 {
     }
     public static boolean comprobarPalabra (String palabra,List<String> listaNombres){
         for (String lista:listaNombres) {
-            if (lista.equals(palabra))
+            if (lista.equalsIgnoreCase(palabra))
+                return true;
+        }
+
+        return false; //return lista.contains(nombre.tolowercase)
+    }
+    public static boolean secuenciadecaracteres (String secuencia,List<String> listaNombres){
+        for (String lista:listaNombres) {
+            if (lista.contains(secuencia))
                 return true;
         }
 
         return false;
     }
+
 
 }
